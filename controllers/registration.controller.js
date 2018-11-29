@@ -99,7 +99,6 @@ async function login(obj) {
             username: obj.username
         } 
     }).then(user => {
-        console.log('ini user: ' + user.id)
         if(user != null) {
             if(user.password == obj.password) {
                 result =  3

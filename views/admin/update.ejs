@@ -10,9 +10,9 @@
 <body>
     <form action="/update-process" method="post">
         <input type="text" name="id" value="<% if(obj) { %><%= obj.id %><% } %>" hidden><br>
-        <input class="form-control" type="text" name="nama" id="" value="<% if(obj) { %><%= obj.nama %><% } %>" required><br>
-        <input class="form-control" type="number" name="jumlah" id="" value="<% if(obj) { %><%= parseInt(obj.jumlah) %><% } %>" required min="1"><br>
-        <input class="form-control" type="number" name="harga" id="" value="<% if(obj) { %><%= parseInt(obj.harga) %><% } %>" required min="50"><br>
+        <input class="form-control" type="text" name="nama" id="" placeholder="Nama" value="<% if(obj) { %><%= obj.nama %><% } %>" required><br>
+        <input class="form-control" type="number" name="jumlah" id="" placeholder="Jumlah" value="<% if(obj) { %><%= parseInt(obj.jumlah) %><% } %>" required min="1"><br>
+        <input class="form-control" type="number" name="harga" id="" placeholder="Harga" value="<% if(obj) { %><%= parseInt(obj.harga) %><% } %>" required min="50"><br>
         <input class="btn btn-primary"type="submit" value="Update">
     </form>
     <form action="/admin" method="get">
