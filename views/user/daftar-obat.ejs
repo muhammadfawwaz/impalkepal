@@ -28,10 +28,7 @@
                         <td>
                             <form action="/add-keranjang" method="post">
                                 <input type="text" name="id" value="<%= obat.id %>" hidden>
-                                <input type="number" name="qty" placeholder="qty" id="validationCustom03" required max="<%= parseInt(obat.jumlah) %>">
-                                <div class="invalid-feedback">
-                                    Jumlah barang harus diisi
-                                </div>
+                                <input type="number" name="qty" placeholder="qty" required max="<%= parseInt(obat.jumlah) %>" min="1">
                                 <input type="text" name="nama" id="" value="<%= obat.nama %>" hidden>
                                 <input type="text" name="harga" id="" value="<%= obat.harga %>" hidden>
                                 <input type="submit" value="Tambah ke Keranjang">
