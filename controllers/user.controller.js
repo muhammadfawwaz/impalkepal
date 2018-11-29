@@ -100,7 +100,7 @@ exports.historiTr = async function (req,res) {
                     nama: tr.nama,
                     harga: tr.harga,
                     jumlah: tr.jumlah,
-                    waktu: tr.updatedAty
+                    waktu: tr.updatedAt
                 })
             }
             i++
