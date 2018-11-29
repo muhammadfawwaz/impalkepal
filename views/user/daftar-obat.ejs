@@ -26,9 +26,9 @@
                         <td><%= obat.harga %></td>
                         <td><%= obat.jumlah %></td>
                         <td>
-                            <form action="/add-keranjang" method="post">
+                            <form action="/add-keranjang" method="post" class="needs-validation" novalidate>
                                 <input type="text" name="id" value="<%= obat.id %>" hidden>
-                                <input type="number" name="qty" placeholder="qty" max="<%= parseInt(obat.jumlah) %>" min="1" id="validationCustom01" required>
+                                <input class="form-control" type="number" name="qty" placeholder="qty" max="<%= parseInt(obat.jumlah) %>" min="1" id="validationCustom01" required>
                                 <div class="invalid-feedback">
                                     Jumlah barang tidak boleh kosong
                                 </div>
