@@ -1,19 +1,5 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('database', 'username', 'password', {
-  host: 'localhost',
-  dialect: 'sqlite',
-  operatorsAliases: false,
-
-  pool: {
-    max: 5,
-    min: 0,
-    acquire: 30000,
-    idle: 10000
-  },
-
-  // SQLite only
-  storage: './database.sqlite'
-});
+const sequelize = new Sequelize('postgres://fgoqwlaudvklby:5c76acbb83906ee5d405d4c5e0faccfcc00f34e26fe83a932ddf1056b854c770@ec2-54-243-150-10.compute-1.amazonaws.com:5432/d5ar2nhd60t84r')
 
 sequelize
   .authenticate()
