@@ -10,10 +10,10 @@
 <body>
     <form action="/update-process" method="post">
         <input type="text" name="id" value="<% if(obj) { %><%= obj.id %><% } %>" hidden><br>
-        <input type="text" name="nama" id="" value="<% if(obj) { %><%= obj.nama %><% } %>" required><br>
-        <input type="text" name="jumlah" id="" value="<% if(obj) { %><%= obj.jumlah %><% } %>" min="1" required><br>
-        <input type="text" name="harga" id="" value="<% if(obj) { %><%= obj.harga %><% } %>" min="50" required><br>
-        <input type="submit" value="Update">
+        <input class="form-control" type="text" name="nama" id="" value="<% if(obj) { %><%= obj.nama %><% } %>" required><br>
+        <input class="form-control" type="text" name="jumlah" id="" value="<% if(obj) { %><%= obj.jumlah %><% } %>" min="1" required><br>
+        <input class="form-control" type="text" name="harga" id="" value="<% if(obj) { %><%= obj.harga %><% } %>" min="50" required><br>
+        <input class="btn btn-primary"type="submit" value="Update">
     </form>
     <form action="/admin" method="get">
         <input type="submit" value="Dashboard">
