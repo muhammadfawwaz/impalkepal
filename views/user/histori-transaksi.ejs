@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <th>Nomor</th>
+            <th>Nama</th>
+            <th>Harga</th>
+            <th>Jumlah</th>
+            <th>Waktu</th>
+        </thead>
+        <tbody>
+            <% if(obj) { %>
+                <% var i = 1 %>
+                <% obj.forEach(function(obat) { %>
+                    <tr>
+                        <td><%= i %></td>
+                        <td><%= obat.nama %></td>
+                        <td><%= obat.harga %></td>
+                        <td><%= obat.jumlah %></td>
+                        <td><%= obat.waktu %></td>
+                    </tr>
+                    <% i++ %>
+                <% }) %>
+            <% } else { %>
+                <h3>Tidak ada obat</h3>
+            <% } %>
+        </tbody>
+    </table>
+    <form action="/home" method="get">
+        <input type="submit" value="Home">
+    </form>
+</body>
+</html>

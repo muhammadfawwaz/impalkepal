@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/create-obat" method="POST">
+        <input type="text" name="nama" id="" placeholder="Nama"><br>
+        <input type="number" name="jumlah" id="" placeholder="Jumlah"><br>
+        <input type="number" name="harga" id="" placeholder="Harga"><br>
+        <input type="submit" value="Submit">
+    </form>
+    <table border="1">
+        <thead>
+            <th>Nomor</th>
+            <th>Nama</th>
+            <th>Harga</th>
+            <th>Jumlah</th>
+            <th>Aksi</th>
+        </thead>
+        <tbody>
+            <% if(readObat) { %>
+                <% var i = 1 %>
+                <% readObat.forEach(function(obat) { %>
+                    <tr>
+                        <td><%= i %></td>
+                        <td><%= obat.nama %></td>
+                        <td><%= obat.harga %></td>
+                        <td><%= obat.jumlah %></td>
+                        <td>
+                            <form action="/delete-obat" method="post">
+                                <input type="text" name="id" value="<%= obat.id %>" hidden>
+                                <input type="submit" value="Delete">
+                            </form>
+                            <form action="/update-obat/<%= obat.id %>" method="get">
+                                <input type="submit" value="Update">
+                            </form>
+                        </td>
+                    </tr>
+                    <% i++ %>
+                <% }) %>
+            <% } else { %>
+                <h3>Tidak ada obat</h3>
+            <% } %>
+        </tbody>
+    </table>
+    <form action="/logout" method="get">
+        <input type="submit" value="Keluar">
+    </form>
+    <form action="/daftar-order" method="get">
+        <input type="submit" value="Daftar Order">
+    </form>
+    <form action="/daftar-penjualan" method="get">
+        <input type="submit" value="Daftar Penjualan">
+    </form>
+</body>
+</html>
