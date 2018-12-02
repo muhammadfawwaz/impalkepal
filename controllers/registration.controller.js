@@ -120,7 +120,8 @@ async function register(obj) {
             firstName: obj.firstName,
             lastName: obj.lastName,
             username: obj.username,
-            password: obj.password
+            password: obj.password,
+            phone: obj.phone
         })
     });
 }

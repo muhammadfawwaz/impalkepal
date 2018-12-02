@@ -22,6 +22,9 @@ sequelize
     },
     password: {
         type: Sequelize.STRING
+    },
+    phone: {
+        type: Sequelize.STRING
     }
 });
 
