@@ -46,10 +46,12 @@ exports.login = async function (req,res) {
         }
     }
     else if(parseInt(loginResult) == parseInt(PASSWORD_WRONG)) {
-        return res.redirect('/login')
+        var msg = 'Password salah silahkan coba lagi'
+        return res.render('login/login',{msg});
     }
     else if(parseInt(loginResult) == parseInt(USERNAME_NOT_FOUND)){
-        return res.redirect('/login')
+        var msg = 'Anda belum terdaftar'
+        return res.render('login/login',{msg});
     }
 }
 
