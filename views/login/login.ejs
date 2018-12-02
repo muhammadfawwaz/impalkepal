@@ -20,10 +20,13 @@
     </style>
 </head>
 <body>
-    <% if(msg) { %>
+    <h2 id="loginH2">Login</h2>
+    <% if(msgLogin) { %>
         <div class="alert alert-danger" role="alert"><%= msg %></div>
     <% } %>
-    <h2 id="loginH2">Login</h2>
+    <% if(msgLogout) { %>
+        <div class="alert alert-success" role="alert"><%= msg %></div>
+    <% } %>
     <form action="/login" method="post" class="needs-validation" novalidate>
         <input class="form-control" type="text" name="username" placeholder="Username" id="validationCustom01" required>
         <div class="invalid-feedback">

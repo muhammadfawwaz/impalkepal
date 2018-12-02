@@ -1,7 +1,16 @@
 const model = require('../models/model')
 
 exports.showRegister = function(req, res, next) {
-    res.render('register/register');
+    if(req.session.user) {
+        if(req.session.user.username == 'admin') {
+            return res.redirect('/admin')
+        }
+        else {
+            return res.redirect('/home')
+        }
+    }
+    var msg = ''
+    return res.render('register/register',{msg});
 }
 
 exports.showLogin = function (req,res) {
@@ -13,8 +22,9 @@ exports.showLogin = function (req,res) {
             return res.redirect('/home')
         }
     }
-    var msg = ''
-    return res.render('login/login',{msg});
+    var msgLogin = ''
+    var msgLogout = ''
+    return res.render('login/login',{msgLogin,msgLogout});
 }
 
 exports.logout = function (req,res) {
@@ -22,7 +32,9 @@ exports.logout = function (req,res) {
         res.clearCookie('user_sid')
         console.log('sessionLogoutController = ' + JSON.stringify(req.session))
     }
-    return res.redirect('/login')
+    var msgLogin = ''
+    var msgLogout = 'Anda telah keluar'
+    return res.render('login/login',{msgLogin,msgLogout});
 }
 
 exports.register = async function (req,res) {
@@ -47,12 +59,14 @@ exports.login = async function (req,res) {
         }
     }
     else if(parseInt(loginResult) == parseInt(PASSWORD_WRONG)) {
-        var msg = 'Password salah silahkan coba lagi'
-        return res.render('login/login',{msg});
+        var msgLogin = 'Password salah silahkan coba lagi'
+        var msgLogout = ''
+        return res.render('login/login',{msgLogin,msgLogout});
     }
     else if(parseInt(loginResult) == parseInt(USERNAME_NOT_FOUND)){
-        var msg = 'Anda belum terdaftar'
-        return res.render('login/login',{msg});
+        var msgLogin = 'Anda belum terdaftar'
+        var msgLogout = ''
+        return res.render('login/login',{msgLogin,msgLogout});
     }
 }
 

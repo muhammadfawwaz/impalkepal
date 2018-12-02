@@ -21,6 +21,9 @@
 </head>
 <body>
     <h2 id="registerH2">Register</h2>
+    <% if(msg) { %>
+        <div class="alert alert-danger" role="alert"><%= msg %></div>
+    <% } %>
     <form action="/register" method="post" class="needs-validation" novalidate>
     <input class="form-control" type="text" name="firstName" placeholder="First Name" id="validationCustom01" required>
     <div class="invalid-feedback">
