@@ -47,7 +47,7 @@ exports.register = async function (req,res) {
         return res.render('login/login',{msgLogin,msgLogout});
     }
     msgLogin = 'Username telah terpakai. Silahkan coba lagi'
-    return res.render('login/login',{msgLogin,msgLogout});
+    return res.render('register/register',{msg});
 }
 
 exports.login = async function (req,res) {
