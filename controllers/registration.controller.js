@@ -13,7 +13,8 @@ exports.showLogin = function (req,res) {
             return res.redirect('/home')
         }
     }
-    return res.render('login/login');
+    var msg = ''
+    return res.render('login/login',{msg});
 }
 
 exports.logout = function (req,res) {
