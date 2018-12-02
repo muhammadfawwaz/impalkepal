@@ -11,15 +11,32 @@
         width: 80%;
         margin: auto;
     }
+    #dashboardH2 {
+        margin-top: 100px;
+    }
+    form {
+        margin-top: 100px;
+    }
+    #btnSubmit {
+        width: 100%;
+    }
+    #tableH2 {
+        margin-top: 100px;
+    }
+    btn {
+        width: 100%;
+    }
     </style>
 </head>
 <body>
+    <h2 id="dashboardH2">Admin Dashboard</h2>
     <form action="/create-obat" method="POST">
         <input class="form-control" type="text" name="nama" placeholder="Nama" id="validationCustom01" required>
         <input class="form-control" type="number" name="jumlah" placeholder="Jumlah" id="validationCustom02" required min="1">
         <input class="form-control" type="number" name="harga" placeholder="Harga" id="validationCustom03" required min="50">
-        <input class="btn btn-primary" type="submit" value="Submit">
+        <input class="btn btn-primary" type="submit" value="Submit" id="btnSubmit">
     </form>
+    <h2 id="tableH2">Daftar Obat</h2>
     <table class="table table-hover">
         <thead>
             <th>Nomor</th>
@@ -40,10 +57,10 @@
                         <td>
                             <form action="/delete-obat" method="post">
                                 <input type="text" name="id" value="<%= obat.id %>" hidden>
-                                <input type="submit" value="Delete">
+                                <input type="submit" value="Delete" class="btn btn-success">
                             </form>
                             <form action="/update-obat/<%= obat.id %>" method="get">
-                                <input type="submit" value="Update">
+                                <input type="submit" value="Update" class="btn btn-danger">
                             </form>
                         </td>
                     </tr>
@@ -55,13 +72,13 @@
         </tbody>
     </table>
     <form action="/logout" method="get">
-        <input type="submit" value="Keluar">
+        <input type="submit" value="Keluar" class="btn btn-danger">
     </form>
     <form action="/daftar-order" method="get">
-        <input type="submit" value="Daftar Order">
+        <input type="submit" value="Daftar Order" class="btn btn-warning">
     </form>
     <form action="/daftar-penjualan" method="get">
-        <input type="submit" value="Daftar Penjualan">
+        <input type="submit" value="Daftar Penjualan" class="btn btn-info">
     </form>
 </body>
 </html>
