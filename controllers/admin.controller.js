@@ -17,19 +17,17 @@ exports.create = async function (req,res) {
 
 exports.read = async function (req,res) {
     var state = registrationController.auth(req.session.user,'admin')
-    // if(state == 1) {
-    //     await model.obat.findAll().then(readObat => {
-    //         res.render('admin/dashboard',{readObat});
-    //     })
-    // }
-    // else if(state == 2) {
-    //     res.redirect('/forbidden-access')
-    // }
-    // else if(state == 5) {
-    //     res.redirect('/login')
-    // }
-    var readObat = 0
-    res.render('admin/dashboard',{readObat});
+    if(state == 1) {
+        await model.obat.findAll().then(readObat => {
+            res.render('admin/dashboard',{readObat});
+        })
+    }
+    else if(state == 2) {
+        res.redirect('/forbidden-access')
+    }
+    else if(state == 5) {
+        res.redirect('/login')
+    }
 }
 
 exports.delete = async function (req,res) {
