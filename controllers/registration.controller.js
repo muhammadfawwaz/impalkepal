@@ -38,8 +38,16 @@ exports.logout = function (req,res) {
 }
 
 exports.register = async function (req,res) {
-    await register(req.body)
-    res.redirect('/')
+    var msgLogin = ''
+    var msgLogout = ''
+    var found = await findUsername(req.body.username)
+    if(!found) {
+        msgLogout = 'Anda telah berhasil registrasi. Silahkan login'
+        await register(req.body)
+        return res.render('login/login',{msgLogin,msgLogout});
+    }
+    msgLogin = 'Username telah terpakai. Silahkan coba lagi'
+    return res.render('login/login',{msgLogin,msgLogout});
 }
 
 exports.login = async function (req,res) {
@@ -136,6 +144,23 @@ async function login(obj) {
             result = 1
         }
         console.log('result=' + result)
+    })
+    return result
+}
+
+async function findUsername(username) {
+    var result
+    await model.user.findOne({ 
+        where: {
+            username: username
+        } 
+    }).then(user => {
+        if(user) {
+            result = true
+        }
+        else {
+            result = false
+        }
     })
     return result
 }
