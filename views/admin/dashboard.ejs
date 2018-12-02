@@ -6,15 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+    body {
+        width: 80%;
+        margin: auto;
+    }
+    </style>
 </head>
 <body>
     <form action="/create-obat" method="POST">
-        <input type="text" name="nama" placeholder="Nama" id="validationCustom01" required>
-        <input type="number" name="jumlah" placeholder="Jumlah" id="validationCustom02" required min="1">
-        <input type="number" name="harga" placeholder="Harga" id="validationCustom03" required min="50">
-        <input type="submit" value="Submit">
+        <input class="form-control" type="text" name="nama" placeholder="Nama" id="validationCustom01" required>
+        <input class="form-control" type="number" name="jumlah" placeholder="Jumlah" id="validationCustom02" required min="1">
+        <input class="form-control" type="number" name="harga" placeholder="Harga" id="validationCustom03" required min="50">
+        <input class="btn btn-primary" type="submit" value="Submit">
     </form>
-    <table border="1">
+    <table class="table table-hover">
         <thead>
             <th>Nomor</th>
             <th>Nama</th>
