@@ -150,18 +150,18 @@ async function login(obj) {
 }
 
 async function findUsername(username) {
-    var result
-    await model.user.findOne({ 
-        where: {
-            username: username
-        } 
-    }).then(user => {
-        if(user) {
-            result = true
-        }
-        else {
-            result = false
-        }
-    })
+    var result = false
+    // await model.user.findOne({ 
+    //     where: {
+    //         username: username
+    //     } 
+    // }).then(user => {
+    //     if(user) {
+    //         result = true
+    //     }
+    //     else {
+    //         result = false
+    //     }
+    // })
     return result
 }
