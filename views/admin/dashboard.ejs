@@ -26,6 +26,15 @@
     </style>
 </head>
 <body>
+    <form action="/logout" method="get">
+        <input type="submit" value="Keluar" class="btn btn-danger">
+    </form>
+    <form action="/daftar-order" method="get">
+        <input type="submit" value="Daftar Order" class="btn btn-warning">
+    </form>
+    <form action="/daftar-penjualan" method="get">
+        <input type="submit" value="Daftar Penjualan" class="btn btn-info">
+    </form>
     <h2 id="dashboardH2">Admin Dashboard</h2>
     <form action="/create-obat" method="POST">
         <input class="form-control" type="text" name="nama" placeholder="Nama" id="validationCustom01" required>
@@ -54,10 +63,10 @@
                         <td>
                             <form action="/delete-obat" method="post">
                                 <input type="text" name="id" value="<%= obat.id %>" hidden>
-                                <input type="submit" value="Delete" class="btn btn-success">
+                                <input type="submit" value="Delete" class="btn btn-danger">
                             </form>
                             <form action="/update-obat/<%= obat.id %>" method="get">
-                                <input type="submit" value="Update" class="btn btn-danger">
+                                <input type="submit" value="Update" class="btn btn-warning">
                             </form>
                         </td>
                     </tr>
@@ -68,15 +77,6 @@
             <% } %>
         </tbody>
     </table>
-    <form action="/logout" method="get">
-        <input type="submit" value="Keluar" class="btn btn-danger">
-    </form>
-    <form action="/daftar-order" method="get">
-        <input type="submit" value="Daftar Order" class="btn btn-warning">
-    </form>
-    <form action="/daftar-penjualan" method="get">
-        <input type="submit" value="Daftar Penjualan" class="btn btn-info">
-    </form>
 </body>
 </html>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
