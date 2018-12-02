@@ -46,7 +46,7 @@ exports.register = async function (req,res) {
         await register(req.body)
         return res.render('login/login',{msgLogin,msgLogout});
     }
-    msgLogin = 'Username telah terpakai. Silahkan coba lagi'
+    var msg = 'Username telah terpakai. Silahkan coba lagi'
     return res.render('register/register',{msg});
 }
 
