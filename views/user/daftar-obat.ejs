@@ -6,9 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+    body {
+        width: 80%;
+        margin: auto;
+    }
+    #nameH2 {
+        margin-top: 100px;
+    }
+    .btn {
+        width: 100%;
+    }
+    </style>
 </head>
 <body>
-    <table border="1">
+    <form action="/logout" method="get">
+        <input type="submit" value="Keluar" class="btn btn-danger">
+    </form>
+    <form action="/histori" method="get">
+        <input type="submit" value="Histori Transaksi" class="btn btn-warning">
+    </form>
+    <form action="/keranjang" method="get">
+        <input type="submit" value="Keranjang" class="btn btn-info">
+    </form>
+    <h2 id="nameH2">Hai <%= name %></h2>
+    <table class="table table-hover">
         <thead>
             <th>Nomor</th>
             <th>Nama</th>
@@ -31,7 +53,7 @@
                                 <input class="form-control" type="number" name="qty" placeholder="qty" max="<%= parseInt(obat.jumlah) %>" min="1" required>
                                 <input type="text" name="nama" id="" value="<%= obat.nama %>" hidden>
                                 <input type="text" name="harga" id="" value="<%= obat.harga %>" hidden>
-                                <input type="submit" value="Tambah ke Keranjang">
+                                <input type="submit" value="Tambah ke Keranjang" class="btn btn-info">
                             </form>
                         </td>
                     </tr>
@@ -42,15 +64,6 @@
             <% } %>
         </tbody>
     </table>
-    <form action="/logout" method="get">
-        <input type="submit" value="Keluar">
-    </form>
-    <form action="/histori" method="get">
-        <input type="submit" value="Histori Transaksi">
-    </form>
-    <form action="/keranjang" method="get">
-        <input type="submit" value="Keranjang">
-    </form>
 </body>
 </html>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

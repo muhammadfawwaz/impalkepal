@@ -30,7 +30,8 @@ exports.homepage = async function (req,res) {
     console.log(state)
     if(state == 3) {
         var obj = await readObat()
-        res.render('user/daftar-obat', { obj });
+        var name = req.session.user.username
+        res.render('user/daftar-obat', { obj,name });
     }
     else if(state == 4) {
         res.redirect('/forbidden-access')
