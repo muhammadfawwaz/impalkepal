@@ -46,28 +46,36 @@ exports.login = async function (req,res) {
     const USERNAME_NOT_FOUND = 1
     const PASSWORD_WRONG = 2
     const PASSWORD_TRUE = 3
-    const loginResult = await login(req.body)
-    console.log(loginResult)
-    if(parseInt(loginResult) == parseInt(PASSWORD_TRUE)) {
-        req.session.user = req.body
-        console.log('sessionController = ' + JSON.stringify(req.session))
-        if(req.body.username == 'admin') {
-            return res.redirect('/admin')
+    if(req.body.username.length > 3 && req.body.password.length > 5) {
+        const loginResult = await login(req.body)
+        console.log(loginResult)
+        if(parseInt(loginResult) == parseInt(PASSWORD_TRUE)) {
+            req.session.user = req.body
+            console.log('sessionController = ' + JSON.stringify(req.session))
+            if(req.body.username == 'admin') {
+                return res.redirect('/admin')
+            }
+            else {
+                return res.redirect('/home')
+            }
         }
-        else {
-            return res.redirect('/home')
+        else if(parseInt(loginResult) == parseInt(PASSWORD_WRONG)) {
+            var msgLogin = 'Password salah silahkan coba lagi'
+            var msgLogout = ''
+            return res.render('login/login',{msgLogin,msgLogout});
+        }
+        else if(parseInt(loginResult) == parseInt(USERNAME_NOT_FOUND)){
+            var msgLogin = 'Anda belum terdaftar'
+            var msgLogout = ''
+            return res.render('login/login',{msgLogin,msgLogout});
         }
     }
-    else if(parseInt(loginResult) == parseInt(PASSWORD_WRONG)) {
-        var msgLogin = 'Password salah silahkan coba lagi'
+    else {
+        var msgLogin = 'Username atau password terlalu pendek'
         var msgLogout = ''
         return res.render('login/login',{msgLogin,msgLogout});
     }
-    else if(parseInt(loginResult) == parseInt(USERNAME_NOT_FOUND)){
-        var msgLogin = 'Anda belum terdaftar'
-        var msgLogout = ''
-        return res.render('login/login',{msgLogin,msgLogout});
-    }
+    
 }
 
 exports.auth = function sessionAuth(user,role) {
