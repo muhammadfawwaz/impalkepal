@@ -16,23 +16,26 @@ exports.addKeranjang = async function (req,res) {
             console.log(JSON.stringify(req.session))
         }
         else {
+            var found = false
             req.session.barang.forEach(function(barang) {
-                if(barang.id == req.body.id && barang.username == req.session.user.username) {
-                    console.log('barang sama')
-                    barang.qty = parseInt(req.body.qty)
-                    break
-                }
-                else {
-                    req.session.barang.push({
-                        id: req.body.id,
-                        qty: req.body.qty,
-                        username: req.session.user.username,
-                        nama: req.body.nama,
-                        harga: req.body.harga
-                    })
-                    console.log(JSON.stringify(req.session))
+                if(!found) {
+                    if(barang.id == req.body.id && barang.username == req.session.user.username) {
+                        console.log('barang sama')
+                        barang.qty = parseInt(req.body.qty)
+                        found = true
+                    }
                 }
             })
+            if(!found) {
+                req.session.barang.push({
+                    id: req.body.id,
+                    qty: req.body.qty,
+                    username: req.session.user.username,
+                    nama: req.body.nama,
+                    harga: req.body.harga
+                })
+                console.log(JSON.stringify(req.session))
+            }
         }
         res.redirect('/home')
     }
