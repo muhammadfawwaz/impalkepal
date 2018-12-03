@@ -29,7 +29,7 @@
             <th>Total</th>
         </thead>
         <tbody>
-            <% if(obj) { %>
+            <% if(obj.length > 0) { %>
                 <% var i = 1 %>
                 <% var total = 0 %>
                 <% obj.forEach(function(obat) { %>
@@ -46,12 +46,12 @@
                 <%= total %>
             <% } else { %>
                 <tr>
-                    <td colspan="5">Tidak ada obat</td>
+                    <td colspan="5" class="text-center">Tidak ada obat</td>
                 </tr>
             <% } %>
         </tbody>
     </table>
-    <% if(obj) { %>
+    <% if(obj.length > 0) { %>
         <h3>Total: <%= total %></h3>
         <form action="/buy-obat" method="post">
             <input type="submit" value="Beli">
