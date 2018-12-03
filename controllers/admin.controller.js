@@ -138,10 +138,16 @@ exports.daftarPenjualan = async function (req,res) {
 exports.verification = async function (req,res) {
     var state = registrationController.auth(req.session.user,'admin')
     if(state == 1) {
-        console.log(req.body)
-        await updateTr(req.body.id)
-        await decrementObat(req.body.idObat,req.body.jumlah)
-        res.redirect('/daftar-order')
+        var process = await processVerif(req.body.idObat,req.body.jumlah)
+        if(process) {
+            console.log(req.body)
+            await updateTr(req.body.id)
+            await decrementObat(req.body.idObat,req.body.jumlah)
+        }
+        else {
+            await deleteTr(req.body.id)
+        }
+        return res.redirect('/daftar-order')
     }
     else if(state == 2) {
         res.redirect('/forbidden-access')
@@ -256,4 +262,13 @@ async function deleteTrObat(id) {
             status: 'not verified'
         }
     });
+}
+
+async function processVerif(id,qty) {
+    var found = await findObat(id)
+    var selisih = parseInt(jumlah) - parseInt(qty)
+    if(found && selisih >= 0) {
+        return true
+    }
+    return false
 }
