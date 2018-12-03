@@ -29,7 +29,7 @@
             <th>Waktu</th>
         </thead>
         <tbody>
-            <% if(obj) { %>
+            <% if(obj.length > 0) { %>
                 <% var i = 1 %>
                 <% obj.forEach(function(obat) { %>
                     <tr>
@@ -42,7 +42,9 @@
                     <% i++ %>
                 <% }) %>
             <% } else { %>
-                <h3>Tidak ada obat</h3>
+                <tr>
+                    <td colspan="5" class="text-center">Tidak ada transaksi</td>
+                </tr>
             <% } %>
         </tbody>
     </table>
