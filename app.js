@@ -50,7 +50,7 @@ app.use(session({
   }
 }));
 
-app.use('/', login);
+app.use('/', homeUserRouter);
 app.use('/users', usersRouter);
 app.use('/register', registerRouter);
 app.use('/register', registerProcessRouter);
