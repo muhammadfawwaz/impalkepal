@@ -27,6 +27,7 @@
             <th>Harga</th>
             <th>Qty</th>
             <th>Total</th>
+            <th>Aksi</th>
         </thead>
         <tbody>
             <% if(obj.length > 0) { %>
@@ -39,6 +40,13 @@
                         <td><%= obat.harga %></td>
                         <td><%= obat.qty %></td>
                         <td><%= parseInt(obat.harga)*parseInt(obat.qty) %></td>
+                        <td>
+                            <form action="/delete-keranjang" method="post">
+                                <input type="text" name="id" id="" value="<%= obat.id %>" hidden>
+                                <input type="text" name="username" id="" value="<%= obat.username %>" hidden>
+                                <input type="submit" value="Delete" class="btn btn-danger">
+                            </form>
+                        </td>
                         <% total = total + parseInt(obat.harga)*parseInt(obat.qty) %>
                     </tr>
                     <% i++ %>
