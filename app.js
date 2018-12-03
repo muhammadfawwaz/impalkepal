@@ -26,6 +26,7 @@ var verifTrAdminRouter = require('./routes/verification-process')
 var penjualanTrAdminRouter = require('./routes/daftar-penjualan')
 var historiTrUserRouter = require('./routes/histori-transaksi')
 var deleteKeranjangUserRouter = require('./routes/delete-keranjang')
+var deleteOrderAdminRouter = require('./routes/delete-order')
 
 var app = express();
 
@@ -71,6 +72,7 @@ app.use('/daftar-penjualan', penjualanTrAdminRouter);
 app.use('/histori', historiTrUserRouter);
 app.use('/forbidden-access', indexRouter);
 app.use('/delete-keranjang', deleteKeranjangUserRouter);
+app.use('/delete-order', deleteOrderAdminRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

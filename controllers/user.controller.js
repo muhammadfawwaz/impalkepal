@@ -143,16 +143,25 @@ exports.historiTr = async function (req,res) {
 }
 
 exports.deleteKeranjang = function(req,res) {
-    var indeks = 0
-    for(var i = 0;i < req.session.barang;i++) {
-        if(req.session.barang[i].id == req.body.id && req.session.user.username == req.session.barang[i].username) {
-            indeks = i
-            break
+    var state = registrationController.auth(req.session.user,'user')
+    if(state == 3) {
+        var indeks = 0
+        for(var i = 0;i < req.session.barang;i++) {
+            if(req.session.barang[i].id == req.body.id && req.session.user.username == req.session.barang[i].username) {
+                indeks = i
+                break
+            }
         }
+        req.session.barang.splice(indeks,1)
+        console.log(JSON.stringify(req.session))
+        res.redirect('/keranjang')
     }
-    req.session.barang.splice(indeks,1)
-    console.log(JSON.stringify(req.session))
-    res.redirect('/keranjang')
+    else if(state == 4) {
+        res.redirect('/forbidden-access')
+    }
+    else if(state == 5) {
+        res.redirect('/login')
+    }
 }
 
 async function readObat() {

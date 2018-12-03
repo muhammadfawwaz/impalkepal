@@ -149,6 +149,20 @@ exports.verification = async function (req,res) {
     }
 }
 
+exports.deleteOrder = async function (req,res) {
+    var state = registrationController.auth(req.session.user,'admin')
+    if(state == 1) {
+        await deleteTr(req.body.id)
+        res.redirect('/daftar-order')
+    }
+    else if(state == 2) {
+        res.redirect('/forbidden-access')
+    }
+    else if(state == 5) {
+        res.redirect('/login')
+    }
+}
+
 async function createObat(obj) {
     await model.obat.sync({force: false}).then(() => {
         return model.obat.create({
@@ -221,4 +235,13 @@ async function decrementObat(id,jumlah) {
             { where: { id: id }} /* where criteria */
         )
     })
+}
+
+async function deleteTr(id) {
+    console.log('id: ' + id)
+    await model.transaksi.destroy({
+        where: {
+            id: id
+        }
+    });
 }
