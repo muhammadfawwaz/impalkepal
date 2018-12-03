@@ -65,20 +65,22 @@ exports.keranjang = async function (req,res) {
         if(barangs == undefined || barangs.length == 0) {
             res.render('user/keranjang', { obj });
         }
-        barangs.forEach(async function(barang) {
-            if(barang.username == req.session.user.username) {
-                obj.push({
-                    nama: barang.nama,
-                    harga: barang.harga,
-                    qty: barang.qty
-                })
-            }
-            i++
-            if(i == barangs.length) {
-                console.log(obj)
-                res.render('user/keranjang', { obj });
-            }
-        })
+        else {
+            barangs.forEach(async function(barang) {
+                if(barang.username == req.session.user.username) {
+                    obj.push({
+                        nama: barang.nama,
+                        harga: barang.harga,
+                        qty: barang.qty
+                    })
+                }
+                i++
+                if(i == barangs.length) {
+                    console.log(obj)
+                    res.render('user/keranjang', { obj });
+                }
+            })
+        }
     }
     else if(state == 4) {
         res.redirect('/forbidden-access')
