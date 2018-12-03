@@ -59,7 +59,7 @@ exports.buyObat = async function (req,res) {
 exports.keranjang = async function (req,res) {
     var state = registrationController.auth(req.session.user,'user')
     if(state == 3) {
-        var obj = []
+        var obj = null
         var barangs = req.session.barang
         var i = 0
         if(barangs == undefined || barangs.length == 0) {
