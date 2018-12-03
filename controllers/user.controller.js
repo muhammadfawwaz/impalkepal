@@ -18,6 +18,7 @@ exports.addKeranjang = async function (req,res) {
         else {
             req.session.barang.forEach(function(barang) {
                 if(barang.id == req.body.id && barang.username == req.session.user.username) {
+                    console.log('barang sama')
                     barang.qty = parseInt(req.body.qty)
                 }
                 else {
