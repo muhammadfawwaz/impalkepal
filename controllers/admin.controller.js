@@ -34,6 +34,7 @@ exports.delete = async function (req,res) {
     var state = registrationController.auth(req.session.user,'admin')
     if(state == 1) {
         await deleteObat(req.body.id)
+        await deleteTrObat(req.body.idObat)
         res.redirect('/admin')
     }
     else if(state == 2) {
@@ -243,6 +244,16 @@ async function deleteTr(id) {
     await model.transaksi.destroy({
         where: {
             id: id
+        }
+    });
+}
+
+async function deleteTrObat(id) {
+    console.log('id: ' + id)
+    await model.transaksi.destroy({
+        where: {
+            idObat: id,
+            status: 'not verified'
         }
     });
 }
