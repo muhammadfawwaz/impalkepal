@@ -50,7 +50,6 @@
                             </form>
                             <form action="/delete-order" method="post">
                                 <input type="text" name="id" value="<%= obat.id %>" hidden>
-                                <input type="text" name="idObat" value="<%= obat.idObat %>" hidden>
                                 <input type="submit" value="Delete" class="btn btn-danger">
                             </form>
                         </td>
@@ -59,7 +58,7 @@
                 <% }) %>
             <% } else { %>
                 <tr>
-                    <td colspan="5" class="text-center">Tidak ada order</td>
+                    <td colspan="7" class="text-center">Tidak ada order</td>
                 </tr>
             <% } %>
         </tbody>
