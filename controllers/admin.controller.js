@@ -34,7 +34,7 @@ exports.delete = async function (req,res) {
     var state = registrationController.auth(req.session.user,'admin')
     if(state == 1) {
         await deleteObat(req.body.id)
-        await deleteTrObat(req.body.idObat)
+        await deleteTrObat(req.body.id)
         res.redirect('/admin')
     }
     else if(state == 2) {
