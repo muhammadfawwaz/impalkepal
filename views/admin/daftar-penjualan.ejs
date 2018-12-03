@@ -23,9 +23,11 @@
     <table class="table table-hover">
         <thead>
             <th>Nomor</th>
+            <th>Username</th>
             <th>Nama</th>
             <th>Harga</th>
             <th>Jumlah</th>
+            <th>Total</th>
             <th>Waktu</th>
         </thead>
         <tbody>
@@ -34,9 +36,11 @@
                 <% obj.forEach(function(obat) { %>
                     <tr>
                         <td><%= i %></td>
+                        <td><%= obat.username %></td>
                         <td><%= obat.nama %></td>
                         <td><%= obat.harga %></td>
                         <td><%= obat.jumlah %></td>
+                        <td><%= parseInt(obat.jumlah) * parseInt(obat.harga) %></td>
                         <td><%= obat.waktu %></td>
                     </tr>
                     <% i++ %>

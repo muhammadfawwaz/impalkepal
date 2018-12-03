@@ -118,7 +118,8 @@ exports.daftarPenjualan = async function (req,res) {
                     nama: tr.nama,
                     harga: tr.harga,
                     jumlah: tr.jumlah,
-                    waktu: tr.updatedAt
+                    waktu: tr.updatedAt,
+                    username: tr.username
                 })
             }
             i++
