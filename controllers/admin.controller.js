@@ -86,7 +86,8 @@ exports.daftarBarang = async function (req,res) {
                     nama: tr.nama,
                     harga: tr.harga,
                     jumlah: tr.jumlah,
-                    idObat: tr.idObat
+                    idObat: tr.idObat,
+                    username: tr.username
                 })
             }
             i++
