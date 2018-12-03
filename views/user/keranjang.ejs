@@ -43,7 +43,6 @@
                     </tr>
                     <% i++ %>
                 <% }) %>
-                <%= total %>
             <% } else { %>
                 <tr>
                     <td colspan="5" class="text-center">Tidak ada obat</td>
@@ -54,7 +53,7 @@
     <% if(obj.length > 0) { %>
         <p>Total: <%= total %></p>
         <form action="/buy-obat" method="post">
-            <input type="submit" value="Beli">
+            <input type="submit" value="Beli" class="btn btn-info">
         </form>
     <% } %>
 </body>
