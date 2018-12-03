@@ -266,8 +266,8 @@ async function deleteTrObat(id) {
 
 async function processVerif(id,qty) {
     var found = await findObat(id)
-    var selisih = parseInt(jumlah) - parseInt(qty)
-    if(found && selisih >= 0) {
+    var selisih = parseInt(found.jumlah) - parseInt(qty)
+    if(found.length > 0 && selisih >= 0) {
         return true
     }
     return false
